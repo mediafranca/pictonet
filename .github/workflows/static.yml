@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - "master"
-
 # Opcional: permite ejecutar manualmente desde la pestaña Actions
 workflow_dispatch:
 
