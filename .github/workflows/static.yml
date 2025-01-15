@@ -4,13 +4,12 @@ on:
   push:
     branches:
       - "master"
-# Opcional: permite ejecutar manualmente desde la pestaña Actions
-workflow_dispatch:
+  workflow_dispatch:
 
 permissions:
-  contents: read    # Permite leer el repo
-  pages: write      # Permite desplegar a GH Pages
-  id-token: write   # Permite la OIDC authentication
+  contents: read     # Permite leer el repo
+  pages: write       # Permite desplegar a GH Pages
+  id-token: write    # Permite la OIDC authentication
 
 concurrency:
   group: "pages"
@@ -31,19 +30,19 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Compila tu SCSS si lo requieres
+      # (Opcional) Compila tu SCSS
       - name: Compile SCSS
         run: npm run sass
 
-      # Construye el sitio (usa Eleventy para generar los archivos en ./docs)
+      # Construye el sitio con Eleventy
       - name: Build Eleventy site
         run: npm run build
 
-      # Sube la carpeta de salida (docs/) como artifact temporal
+      # Sube la carpeta de salida (ej. "docs/") como artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: docs  # Ajusta si tu build es en otra carpeta
+          path: docs  # Ajusta si tu build sale en otra carpeta
 
   deploy:
     needs: build
@@ -53,7 +52,6 @@ jobs:
       id-token: write
     environment:
       name: github-pages
-      # 'url' se asigna internamente al terminar el deploy
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
