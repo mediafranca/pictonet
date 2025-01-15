@@ -1,0 +1,17 @@
+{
+  "title": "PictoNet",
+  "description": "Sistema de generación automática de pictogramas vectoriales para accesibilidad cognitiva.",
+  "defaultLanguage": "es",
+  "languages": {
+    "es": {
+      "name": "Español",
+      "locale": "es-ES",
+      "dir": "ltr"
+    },
+    "en": {
+      "name": "English",
+      "locale": "en-US",
+      "dir": "ltr"
+    }
+  }
+}

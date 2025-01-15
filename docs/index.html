@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    const userLang = navigator.language || navigator.userLanguage;
+    // Lógica básica: si comienza con 'es', redirige a '/es/', si no, '/en/'.
+    if(userLang.startsWith('es')) {
+      window.location.href = '/es/';
+    } else {
+      window.location.href = '/en/';
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>
