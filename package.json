@@ -8,7 +8,12 @@
     "type": "git",
     "url": "git+https://github.com/hspencer/pictonet.git"
   },
-  "keywords": [],
+  "keywords": [
+    "eleventy",
+    "pictogramas",
+    "SVG",
+    "accesibilidad"
+  ],
   "author": "Herbert Spencer",
   "license": "ISC",
   "bugs": {
@@ -21,11 +26,30 @@
     "sass": "^1.83.0"
   },
   "scripts": {
+    // Ejecución de tests (placeholder)
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "eleventy && npm run sass",
-    "sass": "sass --style compressed src/css/styles.scss docs/css/styles.css",
-    "sass-watch": "sass --watch --style compressed src/css/styles.scss:docs/css/styles.css",
+
+    // Script para desarrollo local:
+    // - Hace watch de SCSS
+    // - Sirve Eleventy en modo live reload
     "start": "npm-run-all --parallel sass-watch eleventy-serve",
-    "eleventy-serve": "eleventy --serve"
+
+    // Alias para comenzar desarrollo rápidamente
+    "dev": "npm run start",
+
+    // Servidor Eleventy con live reload
+    "eleventy-serve": "eleventy --serve",
+
+    // Compila SCSS en modo comprimido y crea docs/css/styles.css
+    "sass": "sass --style compressed src/css/styles.scss docs/css/styles.css",
+
+    // Watch SCSS: recompila en tiempo real durante el desarrollo
+    "sass-watch": "sass --watch --style compressed src/css/styles.scss:docs/css/styles.css",
+
+    // Build por defecto (desarrollo) => compila SCSS y luego ejecuta Eleventy
+    "build": "npm run sass && eleventy",
+
+    // Build de producción (si deseas especificar ELEVENTY_ENV)
+    "build:prod": "ELEVENTY_ENV=production npm run build"
   }
 }

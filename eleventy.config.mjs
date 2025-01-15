@@ -1,11 +1,28 @@
 // eleventy.config.mjs
-import { EleventyI18nPlugin } from "@11ty/eleventy";
+import {
+  EleventyI18nPlugin
+} from "@11ty/eleventy";
 import fs from "fs";
 
-export default function(eleventyConfig) {
+export default function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyI18nPlugin, {
     defaultLanguage: "es",
     localesDirectory: "src/_data/i18n"
+
+    // Determina si estás en modo producción (para GitHub Pages)
+    const isProduction = process.env.ELEVENTY_ENV === "production";
+
+    // Si es producción, usar '/pictonet/' como prefijo.
+    // Si es desarrollo local, usar '/'.
+    const pathPrefix = isProduction ? "/pictonet/" : "/";
+
+    return {
+      pathPrefix, // Eleventy >=1.0
+      dir: {
+        input: "src",
+        output: "docs"
+      }
+    };
   });
 
   // Cargar manualmente las traducciones

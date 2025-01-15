@@ -12,7 +12,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Aquí enlazas tu CSS compilado -->
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="{{ '/css/styles.css' | url }}">
+
 </head>
 <body class="light-mode">
 
@@ -27,6 +28,6 @@
   {% include "footer.njk" %}
 
   <!-- Script principal -->
-  <script src="/js/pictonet.js"></script>
+  <script src="{{ '/js/pictonet.js' | url }}"></script>
 </body>
 </html>
