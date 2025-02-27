@@ -1,116 +1,102 @@
-# PictoNet Web
+# PictoNet
 
-Este repositorio corresponde a la **interfaz web** de PictoNet, un sistema que utiliza modelos de machine learning para generar pictogramas vectoriales (SVG) y mejorar la accesibilidad cognitiva. Aquí se concentra todo lo relacionado con la parte **Frontend** (plantillas, estilos, scripts y lógica de interacción del usuario).
+## Vision
 
-## Estructura General
+PictoNet is an open-source, federated pictogram generation engine designed to support adaptive and inclusive communication. It provides a decentralised and evolving visual language where users can train, edit, and share pictograms that align with their linguistic and cultural contexts. By leveraging AI-driven generation, semantic tokenisation, and community-driven curation, PictoNet enables a truly participatory and accessible approach to pictographic communication.
 
-```
-pictonet-web/
-├─ src/
-│  ├─ _data/
-│  │  └─ i18n/
-│  │     ├─ en.json
-│  │     └─ es.json
-│  ├─ _includes/
-│  │  ├─ layouts/
-│  │  │  └─ layout.njk
-│  │  ├─ partials/
-│  │  │  ├─ header.njk
-│  │  │  ├─ footer.njk
-│  │  │  └─ nav.njk
-│  ├─ css/
-│  │  └─ styles.scss       <- SCSS principal (compilado a styles.css)
-│  ├─ js/
-│  │  └─ pictonet.js       <- Lógica de frontend (modo oscuro, editor SVG, etc.)
-│  ├─ index.njk            <- Página principal (Home)
-│  ├─ about.njk            <- Sección "Acerca de PictoNet"
-│  ├─ team.njk             <- Listado de equipo/usuarios
-│  └─ svg-editor.njk       <- Página ejemplo: Editor de SVG (mock)
-├─ eleventy.config.mjs      <- Configuración de Eleventy
-├─ package.json
-├─ package-lock.json
-└─ README.md                <- Este archivo
-```
+As a federated system, PictoNet ensures that control over data and models remains distributed. Users and communities can host their own nodes, train models locally, and contribute to shared repositories without centralised control. This structure allows community-defined models to emerge, adapting to different visual styles and semantic needs.
 
-## Requisitos Previos
+### **Open-Source and Licensing**
 
-- **Node.js** (versión 14 o superior recomendada; Eleventy requiere Node 18 para versiones recientes).
-- **npm** o **yarn** instalado.
-- Opcional: [**Sass**](https://sass-lang.com/) si deseas compilar manualmente el archivo `styles.scss`. Aunque puede hacerse vía scripts de npm.
+PictoNet is released under the **MIT Licence**, meaning anyone can use, modify, and distribute it freely. The system is designed to respect **ethical AI principles**, ensuring that generated pictograms remain adaptable to diverse linguistic and cultural needs. Community contributions are encouraged to improve accessibility, performance, and the adaptability of the generated pictograms.
 
-## Configuración e Instalación
+## **Repository Architecture**
 
-1. **Clona** este repositorio:
+The PictoNet ecosystem is organised into multiple repositories to ensure scalability, modularity, and collaborative development. These repositories are hosted at [https://github.com/hspencer/pictonet](https://github.com/hspencer/pictonet) and structured as follows:
 
-   ```bash
-   git clone https://github.com/hspencer/pictonet.git
-   cd pictonet
-   ```
+### **1. AI Weights Repository** (`pictonet-models`)
 
-2. **Instala las dependencias**:
+This repository contains AI-generated pictogram models, trained using community-driven datasets. While no predefined translations exist, PictoNet is designed to enable the generation of community-specific models based on user contributions and local adaptations. Model releases include:
 
-   ```bash
-   npm install
-   ```
+- **Community-Generated Models**: Trained collaboratively by users with specific visual and semantic needs.
+- **Federated Learning Models**: Adaptive models that refine themselves based on user feedback and corrections.
+- **Localised Adaptations**: Versions that reflect region-specific cultural and contextual requirements.
 
-   *(Si usas Yarn, simplemente: `yarn`)*
+### **2. AI Core** (`pictonet-core`)
 
-3. **(Opcional) Compila los estilos** si haces cambios en `styles.scss`:
+The core of PictoNet’s AI processing, handling:
 
-   ```bash
-   npm run sass
-   ```
+- Semantic tokenisation based on **Natural Semantic Metalanguage (NSM)**.
+- Scene composition algorithms that structure pictograms based on subject, interaction, and context.
+- Adaptive model learning, enabling pictograms to evolve based on user feedback.
 
-   Esto generará/actualizará el archivo `styles.css` dentro de la carpeta `css`.
+### **3. Spine-Edit (SVG Editor)** (`pictonet-editor`)
 
-## Ejecutar el Sitio en Desarrollo
+A browser-based vector editor for modifying and refining AI-generated pictograms. Features include:
 
-Para arrancar un servidor de desarrollo local con recarga en vivo:
+- Editable **spine-based SVG structures**, where stroke weight and style are adjustable.
+- Live syncing with the AI model, allowing real-time refinement.
+- Support for **personalised visual adaptation**, ensuring pictograms align with user preferences and local expectations.
+
+### **4. User Management & Federated Learning** (`pictonet-users`)
+
+This repository manages identity, authentication, and user-specific learning preferences. It supports:
+
+- Decentralised user nodes, enabling localised training and adaptation.
+- Privacy-preserving **federated learning**, ensuring that improvements can be shared without exposing personal data.
+- Role-based contributions, allowing users to curate, approve, and refine pictograms collaboratively.
+
+### **5. Community Hub & Website** (`pictonet-site`)
+
+The public-facing interface for PictoNet, hosting:
+
+- **Pictogram Library**: A browsable collection of generated pictograms with metadata and usage examples.
+- **Collaboration Tools**: Forums and issue trackers for community discussions.
+- **Documentation & Tutorials**: Guides on using, customising, and contributing to PictoNet.
+
+## **Installation and Development**
+
+To set up PictoNet locally:
 
 ```bash
-npx @11ty/eleventy --serve
+# Clone the AI core repository
+git clone https://github.com/hspencer/pictonet-core.git
+
+# Install dependencies
+cd pictonet-core
+pip install -r requirements.txt
+
+# Run the local server
+python main.py
 ```
 
-Por defecto, el sitio se servirá en [http://localhost:8080](http://localhost:8080). Eleventy quedará “escuchando” los cambios en archivos y se recargará automáticamente cuando detecte modificaciones.
-
-Si prefieres un script en `package.json`, puedes agregar algo como:
-
-```json
-"scripts": {
-  "dev": "eleventy --serve"
-}
-```
-
-Y luego correr:
+For SVG editing:
 
 ```bash
+git clone https://github.com/hspencer/pictonet-editor.git
+cd pictonet-editor
+npm install
 npm run dev
 ```
 
-## Construir para Producción
+## **Contributing to PictoNet**
 
-Para generar la versión estática final en la carpeta **docs** (o la que definas en `eleventy.config.mjs`):
+PictoNet follows an open governance model inspired by projects like Mozilla and W3C initiatives. Contributions are welcome in various forms:
 
-```bash
-npx @11ty/eleventy
-```
+1. **Fork the repository**.
+2. **Create a new branch**: `git checkout -b my-contribution`.
+3. **Make changes and commit them**.
+4. **Submit a pull request (PR) for review**.
 
-(o en caso de haber creado un script en `package.json`)
+For major contributions, we encourage opening a proposal issue first to discuss implementation details with the community.
 
-```bash
-npm run build
-```
+## **Future Roadmap**
 
-El resultado final será una serie de archivos HTML y otros recursos listos para ser desplegados en tu hosting estático (GitHub Pages, Netlify, Vercel, etc.).
+- **Integration with AR & VR**: Enabling real-time pictogram overlays for accessibility in physical spaces.
+- **Multi-user collaboration tools**: Supporting group editing and consensus-based pictogram refinement.
+- **Automated style compression**: AI-assisted recognition of individual drawing patterns to enhance personalisation.
+- **Expanded support for federated learning**: Enabling community-trained models without centralised servers.
 
-## Más Información
+## **Contact & Community**
 
-- **Eleventy**: [Documentación oficial](https://www.11ty.dev/docs/)  
-- **Nunjucks**: [Guía de Nunjucks](https://mozilla.github.io/nunjucks/)  
-- **i18n**: Se soporta internacionalización a través de la carpeta `i18n`, configurada en `eleventy.config.mjs`.
-
-## Licencia
-
-Este proyecto se distribuye bajo la Licencia [MIT](./LICENSE).  
-
-¡Gracias por usar **PictoNet Web**! Cualquier mejora o corrección es bienvenida a través de _Issues_ o _Pull Requests_.
+For questions, suggestions, or to get involved, join the discussion at [https://github.com/hspencer/pictonet](https://github.com/hspencer/pictonet) or email us at [**community@pictos.net**](mailto:community@pictonet.org).
