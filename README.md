@@ -14,6 +14,23 @@ PictoNet is released under the **MIT Licence**, meaning anyone can use, modify, 
 
 PictoNet is not just an automatic generator of pictograms; it is an interactive **human-in-the-loop system** where users actively shape the generated representations. The interface is structured into two core sections:
 
+```asciiArt
+   |––––––––––––––––––––––––––––––––––––––––––––––––––––––––––|
+   |                             |                            |
+   |                             |                            |
+   |    ---------------          |                            |
+   |                             |                 🤚          |
+   |    ---------------          |                            |
+   |         --------------      |            🐜              |
+   |                     -----   |                            |
+   |    ---------------          |                            |
+   |                             |            ✋    ▜         |
+   |                             |                 ▟          |
+   |                             |                            |
+   |                             |                            |
+   |––––––––––––––––––––––––––––––––––––––––––––––––––––––––––|
+```
+
 - **Left Panel: SVG Structure & Semantic Layers**
   - Displays the structural representation of the pictogram.
   - Organized in layers representing objects, interactions, and context.
@@ -53,6 +70,17 @@ A browser-based vector editor for modifying and refining AI-generated pictograms
 - Editable **spine-based SVG structures**, where stroke weight and style are adjustable.
 - Live syncing with the AI model, allowing real-time refinement.
 - Support for **personalised visual adaptation**, ensuring pictograms align with user preferences and local expectations.
+
+  ```
+   |–––––––––––––––––––––––––––––––––|
+   |                |                |
+   |                |                |
+   |      word      |     image      |
+   |                |                |
+   |                |                |
+   |–––––––––––––––––––––––––––––––––|
+
+  ```
 
 ### **4. User Management & Federated Learning** (`pictonet-users`)
 
