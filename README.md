@@ -73,13 +73,14 @@ A browser-based vector editor for modifying and refining AI-generated pictograms
 
   ```
    |–––––––––––––––––––––––––––––––––|
+   | textual or speech prompt -input | 
+   |–––––––––––––––––––––––––––––––––|
    |                |                |
    |                |                |
    |      word      |     image      |
    |                |                |
    |                |                |
    |–––––––––––––––––––––––––––––––––|
-
   ```
 
 ### **4. User Management & Federated Learning** (`pictonet-users`)
