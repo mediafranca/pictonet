@@ -10,6 +10,22 @@ As a federated system, PictoNet ensures that control over data and models remain
 
 PictoNet is released under the **MIT Licence**, meaning anyone can use, modify, and distribute it freely. The system is designed to respect **ethical AI principles**, ensuring that generated pictograms remain adaptable to diverse linguistic and cultural needs. Community contributions are encouraged to improve accessibility, performance, and the adaptability of the generated pictograms.
 
+## **Human-in-the-Loop Interface**
+
+PictoNet is not just an automatic generator of pictograms; it is an interactive **human-in-the-loop system** where users actively shape the generated representations. The interface is structured into two core sections:
+
+- **Left Panel: SVG Structure & Semantic Layers**
+  - Displays the structural representation of the pictogram.
+  - Organized in layers representing objects, interactions, and context.
+  - Selecting an element highlights it both in the SVG panel and in the drawing.
+  
+- **Right Panel: Visual Representation**
+  - Displays the generated pictogram.
+  - Fully editable to allow manual refinements.
+  - Any modification syncs back to the structured representation.
+  
+By interacting with both views, users refine pictograms while also **training the AI model**, reinforcing the correspondence between words, meaning, and visual form. This iterative process ensures that pictograms are not static outputs but evolving constructs shaped by user intent and adaptation.
+
 ## **Repository Architecture**
 
 The PictoNet ecosystem is organised into multiple repositories to ensure scalability, modularity, and collaborative development. These repositories are hosted at [https://github.com/hspencer/pictonet](https://github.com/hspencer/pictonet) and structured as follows:
@@ -99,4 +115,5 @@ For major contributions, we encourage opening a proposal issue first to discuss 
 
 ## **Contact & Community**
 
-For questions, suggestions, or to get involved, join the discussion at [https://github.com/hspencer/pictonet](https://github.com/hspencer/pictonet) or email us at [**community@pictos.net**](mailto:community@pictonet.org).
+For questions, suggestions, or to get involved, join the discussion at [https://github.com/hspencer/pictonet](https://github.com/hspencer/pictonet) or email us at [**community@pictonet.org**](mailto:community@pictonet.org).
+
