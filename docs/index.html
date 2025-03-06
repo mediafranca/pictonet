@@ -2,48 +2,66 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>
-  
-    PictoNet | PictoNet
-  
-</title>
-
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Aquí enlazas tu CSS compilado -->
-  <link rel="stylesheet" href="/css/styles.css" />
+  <title>PictoNet | Comunicación Inclusiva</title>
+  <link rel="stylesheet" href="./css/styles.css" />
 </head>
-<body class="light-mode">
+<body>
+  <header>
+    <h1>PictoNet</h1>
+    <p>Un motor de generación de pictogramas de código abierto y federado.</p>
+  </header>
 
-<header>
-  <h1>PictoNet</h1>
-</header>
-
-<nav>
-  <ul>
-    <li><a href="/">Inicio</a></li>
-    <li><a href="/about/">Acerca de</a></li>
-    <li><a href="/team/">Equipo</a></li>
-    <li><a href="/svg-editor/">Editor SVG</a></li>
-  </ul>
-</nav>
-
-
+  <nav>
+    <ul>
+      <li><a href="#vision">Visión</a></li>
+      <li><a href="#human-loop">Interfaz Humano-en-el-Bucle</a></li>
+      <li><a href="#repositorios">Repositorios</a></li>
+      <li><a href="#localizaciones">Localizaciones</a></li>
+      <li><a href="#colaboracion">Contribuir</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
 
   <main>
-    <h2>Bienvenido a PictoNet</h2>
-<p>
-  Esta es la página principal. Aquí eventualmente podrás generar pictogramas, 
-  explorarlos y dar tus primeros pasos con la plataforma.
-</p>
+    <section id="vision">
+      <h2>Visión</h2>
+      <p>PictoNet es un motor de generación de pictogramas basado en inteligencia artificial que permite una comunicación adaptativa e inclusiva.</p>
+      <p>Es un sistema federado donde los modelos pueden evolucionar localmente y ser compartidos sin un control centralizado.</p>
+    </section>
 
+    <section id="human-loop">
+      <h2>Interfaz Humano-en-el-Bucle</h2>
+      <p>La plataforma permite a los usuarios refinar pictogramas generados automáticamente, entrenando así el modelo en un proceso iterativo.</p>
+    </section>
+
+    <section id="repositorios">
+      <h2>Repositorio y Arquitectura</h2>
+      <ul>
+        <li><strong>pictonet-models</strong>: Modelos de IA basados en aprendizaje federado.</li>
+        <li><strong>pictonet-core</strong>: Tokenización semántica y generación de pictogramas.</li>
+        <li><strong>pictonet-editor</strong>: Editor SVG para modificaciones manuales.</li>
+      </ul>
+    </section>
+
+    <section id="localizaciones">
+      <h2>Localizaciones</h2>
+      <p>PictoNet permite la creación de espacios de nombres personalizados, desde la url. Proyectos activos son:
+        como <code>pictos.net/pacifica</code> o <code>pictos.net/<sup>la capacidad de generar espacios depende de un próximo desarrollo</sup>PueboDeEstorninos</code>, donde comunidades pueden desarrollar sus propios modelos adaptados a sus necesidades lingüísticas y culturales.</p>
+      <p>Además, la arquitectura de PictoNet soporta la destilación de modelos locales para ser integrados en chips físicos más simples, permitiendo su uso en dispositivos embebidos.</p>
+      <p>PictoNet es una travesía por las tierras del Pacífico, un viaje continuo de exploración y adaptación en la comunicación visual.</p>
+    </section>
+
+    <section id="colaboracion">
+      <h2>Cómo Contribuir</h2>
+      <p>PictoNet es de código abierto bajo la licencia MIT y la licencia Creative Commons Atribución-CompartirIgual 4.0 Internacional (CC BY-SA 4.0). Puedes contribuir con código, modelos y mejoras en la accesibilidad.</p>
+    </section>
   </main>
 
   <footer>
-  <p>&copy; 2025 PictoNet. Todos los derechos CC.</p>
-</footer>
+    <p>&copy; 2025 PictoNet. Licencia MIT y CC BY-SA 4.0.</p>
+  </footer>
 
-
-  <!-- Script principal -->
   <script src="/js/pictonet.js"></script>
 </body>
 </html>
