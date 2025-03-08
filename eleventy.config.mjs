@@ -1,29 +1,20 @@
 // eleventy.config.mjs
-import {
-  EleventyI18nPlugin
-} from "@11ty/eleventy";
+import { EleventyI18nPlugin } from "@11ty/eleventy";
 import fs from "fs";
 
 export default function (eleventyConfig) {
+  // Agregar el plugin de internacionalización
   eleventyConfig.addPlugin(EleventyI18nPlugin, {
     defaultLanguage: "es",
-    localesDirectory: "src/_data/i18n"
-
-    // Determina si estás en modo producción (para GitHub Pages)
-    const isProduction = process.env.ELEVENTY_ENV === "production";
-
-    // Si es producción, usar '/pictonet/' como prefijo.
-    // Si es desarrollo local, usar '/'.
-    const pathPrefix = isProduction ? "/pictonet/" : "/";
-
-    return {
-      pathPrefix, // Eleventy >=1.0
-      dir: {
-        input: "src",
-        output: "docs"
-      }
-    };
+    localesDirectory: "src/_data/i18n",
   });
+
+  // Determinar si estás en modo producción (para GitHub Pages)
+  const isProduction = process.env.ELEVENTY_ENV === "production";
+
+  // Si es producción, usar '/pictonet/' como prefijo.
+  // Si es desarrollo local, usar '/'.
+  const pathPrefix = isProduction ? "/pictonet/" : "/";
 
   // Cargar manualmente las traducciones
   const esData = JSON.parse(fs.readFileSync("src/_data/i18n/es.json", "utf-8"));
@@ -35,14 +26,16 @@ export default function (eleventyConfig) {
     return data[key] || key;
   });
 
+  // Retornar la configuración de Eleventy
   return {
+    pathPrefix, // Eleventy >=1.0
     dir: {
       input: "src",
       includes: "_includes",
       data: "_data",
-      output: "docs"
+      output: "docs",
     },
     markdownTemplateEngine: "njk",
-    htmlTemplateEngine: "njk"
+    htmlTemplateEngine: "njk",
   };
 }
