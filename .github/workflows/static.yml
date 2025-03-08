@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read     # Permite leer el repo
-  pages: write       # Permite desplegar a GH Pages
-  id-token: write    # Permite la OIDC authentication
+  contents: read     # Permite leer el repositorio
+  pages: write       # Permite desplegar a GitHub Pages
+  id-token: write    # Permite la autenticación OIDC
 
 concurrency:
   group: "pages"
@@ -40,8 +40,9 @@ jobs:
 
       # Sube la carpeta de salida (ej. "docs/") como artifact
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-artifact@v4  # Actualizado a v4
         with:
+          name: site
           path: docs  # Ajusta si tu build sale en otra carpeta
 
   deploy:
