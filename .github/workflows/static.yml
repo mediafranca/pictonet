@@ -39,10 +39,10 @@ jobs:
         run: npm run build
 
       # Sube la carpeta de salida (ej. "docs/") como artifact
-      - name: Upload artifact
+      - name: Deploy to GitHub Pages
         uses: actions/upload-artifact@v4  # Actualizado a v4
         with:
-          name: site
+          name: github-pages
           path: docs  # Ajusta si tu build sale en otra carpeta
 
   deploy:
