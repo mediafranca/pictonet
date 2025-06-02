@@ -1,6 +1,6 @@
 # PictoNet
 
-**PictoNet** is an open and public initiative led by the [MediaFranca](https://github.com/mediafranca) organisation. It aims to develop a generative pictogram system to support individuals with complex communication needs (CCN), with a particular focus on cognitive accessibility, cultural responsiveness, and self-determination.
+**PictoNet** is an open and public initiative led by [MediaFranca](https://github.com/mediafranca). It aims to develop a generative pictogram system to support individuals with complex communication needs (CCN), with a particular focus on cognitive accessibility, cultural responsiveness, and self-determination.
 
 This repository hosts the preliminary development of the core engine for pictogram generation. The project is in an early research and prototyping phase and is not yet suitable for production use.
 
