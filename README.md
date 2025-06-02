@@ -1,148 +1,41 @@
 # PictoNet
 
-## Vision
+**PictoNet** is an open and public initiative led by the [MediaFranca](https://github.com/mediafranca) organisation. It aims to develop a generative pictogram system to support individuals with complex communication needs (CCN), with a particular focus on cognitive accessibility, cultural responsiveness, and self-determination.
 
-PictoNet is an open-source, federated pictogram generation engine designed to support adaptive and inclusive communication. It provides a decentralised and evolving visual language where users can train, edit, and share pictograms that align with their linguistic and cultural contexts. By leveraging AI-driven generation, semantic tokenisation, and community-driven curation, PictoNet enables a truly participatory and accessible approach to pictographic communication.
+This repository hosts the preliminary development of the core engine for pictogram generation. The project is in an early research and prototyping phase and is not yet suitable for production use.
 
-As a federated system, PictoNet ensures that control over data and models remains distributed. Users and communities can host their own nodes, train models locally, and contribute to shared repositories without centralised control. This structure allows community-defined models to emerge, adapting to different visual styles and semantic needs.
+## Project Goals
 
-### **Open-Source and Licensing**
+- Develop a generative model capable of producing semantically coherent pictograms from textual input.
+- Create a public infrastructure for dataset sharing, model evaluation, and interface testing.
+- Encourage collaborative contributions from the research, AAC, and design communities.
 
-PictoNet is released under the **MIT Licence**, meaning anyone can use, modify, and distribute it freely. The system is designed to respect **ethical AI principles**, ensuring that generated pictograms remain adaptable to diverse linguistic and cultural needs. Community contributions are encouraged to improve accessibility, performance, and the adaptability of the generated pictograms.
+## Roadmap
 
-## **Human-in-the-Loop Interface**
+This roadmap outlines the planned development milestones for the PictoNet project:
 
-PictoNet is not just an automatic generator of pictograms; it is an interactive **human-in-the-loop system** where users actively shape the generated representations. The interface is structured into two core sections:
+1. **Identification of Foundational Models**  
+   Evaluation of suitable architectures for text-to-image generation and symbolic reasoning, with emphasis on interpretability and SVG output.
 
-```asciiArt
-   |––––––––––––––––––––––––––––––––––––––––––––––––––––––––––|
-   |                             |                            |
-   |                             |                            |
-   |    ---------------          |                            |
-   |                             |                 🤚          |
-   |    ---------------          |                            |
-   |         --------------      |            🐜              |
-   |                     -----   |                            |
-   |    ---------------          |                            |
-   |                             |            ✋    ▜         |
-   |                             |                 ▟          |
-   |                             |                            |
-   |                             |                            |
-   |––––––––––––––––––––––––––––––––––––––––––––––––––––––––––|
-```
+2. **Dataset Generation and Curation**  
+   - Construction of training datasets combining visual, linguistic, and contextual information.  
+   - Validation and expert curation to ensure consistency, usability, and inclusivity of generated outputs.
 
-- **Left Panel: SVG Structure & Semantic Layers**
-  - Displays the structural representation of the pictogram.
-  - Organized in layers representing objects, interactions, and context.
-  - Selecting an element highlights it both in the SVG panel and in the drawing.
-  
-- **Right Panel: Visual Representation**
-  - Displays the generated pictogram.
-  - Fully editable to allow manual refinements.
-  - Any modification syncs back to the structured representation.
-  
-By interacting with both views, users refine pictograms while also **training the AI model**, reinforcing the correspondence between words, meaning, and visual form. This iterative process ensures that pictograms are not static outputs but evolving constructs shaped by user intent and adaptation.
+3. **Development of RLHF Interface**  
+   - Design and implementation of a Reinforcement Learning from Human Feedback (RLHF) interface for iterative model improvement.  
+   - Integration of community feedback and expert annotations to guide model fine-tuning.
 
-## **Repository Architecture**
+## Contributing
 
-The PictoNet ecosystem is organised into multiple repositories to ensure scalability, modularity, and collaborative development. These repositories are hosted at [https://github.com/hspencer/pictonet](https://github.com/hspencer/pictonet) and structured as follows:
+We welcome contributions from developers, designers, researchers, and practitioners working in Augmentative and Alternative Communication (AAC), machine learning, interaction design, and related fields.
 
-### **1. AI Weights Repository** (`pictonet-models`)
+Please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines on how to contribute to this project.
 
-This repository contains AI-generated pictogram models, trained using community-driven datasets. While no predefined translations exist, PictoNet is designed to enable the generation of community-specific models based on user contributions and local adaptations. Model releases include:
+## Licence
 
-- **Community-Generated Models**: Trained collaboratively by users with specific visual and semantic needs.
-- **Federated Learning Models**: Adaptive models that refine themselves based on user feedback and corrections.
-- **Localised Adaptations**: Versions that reflect region-specific cultural and contextual requirements.
+This project is released under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). See the [LICENSE](LICENSE) file for details.
 
-### **2. AI Core** (`pictonet-core`)
+## Contact
 
-The core of PictoNet’s AI processing, handling:
-
-- Semantic tokenisation based on **Natural Semantic Metalanguage (NSM)**.
-- Scene composition algorithms that structure pictograms based on subject, interaction, and context.
-- Adaptive model learning, enabling pictograms to evolve based on user feedback.
-
-### **3. Spine-Edit (SVG Editor)** (`pictonet-editor`)
-
-A browser-based vector editor for modifying and refining AI-generated pictograms. Features include:
-
-- Editable **spine-based SVG structures**, where stroke weight and style are adjustable.
-- Live syncing with the AI model, allowing real-time refinement.
-- Support for **personalised visual adaptation**, ensuring pictograms align with user preferences and local expectations.
-
-  ```
-   |–––––––––––––––––––––––––––––––––|
-   | textual or speech prompt -input | 
-   |–––––––––––––––––––––––––––––––––|
-   |                |                |
-   |                |                |
-   |      word      |     image      |
-   |                |                |
-   |                |                |
-   |–––––––––––––––––––––––––––––––––|
-  ```
-
-### **4. User Management & Federated Learning** (`pictonet-users`)
-
-This repository manages identity, authentication, and user-specific learning preferences. It supports:
-
-- Decentralised user nodes, enabling localised training and adaptation.
-- Privacy-preserving **federated learning**, ensuring that improvements can be shared without exposing personal data.
-- Role-based contributions, allowing users to curate, approve, and refine pictograms collaboratively.
-
-### **5. Community Hub & Website** (`pictonet-site`)
-
-The public-facing interface for PictoNet, hosting:
-
-- **Pictogram Library**: A browsable collection of generated pictograms with metadata and usage examples.
-- **Collaboration Tools**: Forums and issue trackers for community discussions.
-- **Documentation & Tutorials**: Guides on using, customising, and contributing to PictoNet.
-
-## **Installation and Development**
-
-To set up PictoNet locally:
-
-```bash
-# Clone the AI core repository
-git clone https://github.com/hspencer/pictonet-core.git
-
-# Install dependencies
-cd pictonet-core
-pip install -r requirements.txt
-
-# Run the local server
-python main.py
-```
-
-For SVG editing:
-
-```bash
-git clone https://github.com/hspencer/pictonet-editor.git
-cd pictonet-editor
-npm install
-npm run dev
-```
-
-## **Contributing to PictoNet**
-
-PictoNet follows an open governance model inspired by projects like Mozilla and W3C initiatives. Contributions are welcome in various forms:
-
-1. **Fork the repository**.
-2. **Create a new branch**: `git checkout -b my-contribution`.
-3. **Make changes and commit them**.
-4. **Submit a pull request (PR) for review**.
-
-For major contributions, we encourage opening a proposal issue first to discuss implementation details with the community.
-
-## **Future Roadmap**
-
-- **Integration with AR & VR**: Enabling real-time pictogram overlays for accessibility in physical spaces.
-- **Multi-user collaboration tools**: Supporting group editing and consensus-based pictogram refinement.
-- **Automated style compression**: AI-assisted recognition of individual drawing patterns to enhance personalisation.
-- **Expanded support for federated learning**: Enabling community-trained models without centralised servers.
-
-## **Contact & Community**
-
-For questions, suggestions, or to get involved, join the discussion at [https://github.com/hspencer/pictonet](https://github.com/hspencer/pictonet) or email us at [**community@pictonet.org**](mailto:community@pictonet.org).
+For questions or collaboration proposals, please contact the project lead via [herbertspencer.net](https://herbertspencer.net) or through the organisation at [mediafranca](https://github.com/mediafranca).
 
