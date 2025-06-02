@@ -29,7 +29,7 @@ This roadmap outlines the planned development milestones for the PictoNet projec
 
 We welcome contributions from developers, designers, researchers, and practitioners working in Augmentative and Alternative Communication (AAC), machine learning, interaction design, and related fields.
 
-Please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines on how to contribute to this project.
+Please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) (o [CONTRIBUIR.md](CONTRIBUIR.md), en castellano) file for guidelines on how to contribute to this project.
 
 ## Licence
 
