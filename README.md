@@ -1,5 +1,7 @@
 # PictoNet: Local, Modular, and Semantically Grounded Pictogram Generation
 
+hola
+
 **PictoNet** is an open and public initiative led by [MediaFranca](https://github.com/mediafranca). It aims to develop a generative pictogram system to support individuals with complex communication needs (CCN), with a particular focus on cognitive accessibility, cultural responsiveness, and self-determination.
 
 PictoNet is a research-driven visual language pipeline designed to generate editable, semantically meaningful SVG pictograms from natural language input. It is built around the principle of doing more with less: using small, local models, modular components, and iterative refinement rather than relying on large-scale, opaque AI infrastructures.
