@@ -1,0 +1,3 @@
+[submodule "nlu_frontend"]
+	path = nlu_frontend
+	url = https://github.com/mediafranca/nlu-schema.git

@@ -9,6 +9,7 @@ We are not just building a tool; we are seeding the conditions for a community-g
 The PictoNet project is a modular ecosystem organized across several repositories. This structure separates concerns and clarifies how different parts of the project relate to one another.
 
 *   **[`mediafranca/pictonet`](https://github.com/mediafranca/pictonet)** (This Repository): The core generative engine. This repository contains the trained models, the source code for the 5-stage generative pipeline, the `PICTOS` training dataset, and foundational documentation, including the detailed technical plan.
+*   **[`mediafranca/nlu-schema`](https://github.com/mediafranca/nlu-schema)**: The Natural Language Understanding front-end. This repository defines the semantic schema and provides the multilayered NLU pipeline (Frame Semantics, NSM, and Speech Act Classification) that transforms natural language input into structured semantic representations. Integrated as a submodule in the `nlu_frontend/` directory.
 *   **[`mediafranca/pictoforge`](https://github.com/mediafranca/pictoforge)**: The web-based interface for round-trip authoring, interaction, and feedback (RLHF). PictoForge is the primary gateway for users, practitioners, and researchers to engage with the generative model.
 *   **[`mediafranca/vcsci`](https://github.com/mediafranca/vcsci)**: The Visual Communicability and Semantic Correspondence Index. This repository stores the benchmark phrase sets and evaluation tools used to assess the clarity, effectiveness, and semantic accuracy of the generated pictograms.
 *   **[`mediafranca/manifesto`](https://github.com/mediafranca/manifesto)**: The repository for the project's guiding principles and ethical framework, open to discussion and community input.
@@ -21,7 +22,7 @@ This repository contains the core of the PictoNet project: the generative engine
 
 PictoNet's core innovation lies in its ability to go beyond literal text-to-image synthesis, addressing the more complex task of pragmatically aware intermodal translation. This is achieved through a sophisticated **5-stage generative pipeline**:
 
-1.  **Semantic Analysis Frontend**: Deconstructs natural language input into a rich, structured semantic representation using Frame Semantics, Natural Semantic Metalanguage (NSM), and Speech Act Classification.
+1.  **Semantic Analysis Frontend** ([`nlu-schema`](https://github.com/mediafranca/nlu-schema)): Deconstructs natural language input into a rich, structured semantic representation using Frame Semantics, Natural Semantic Metalanguage (NSM), and Speech Act Classification. This module outputs a hierarchical JSON object that serves as the "semantic brief" for the generation engine.
 2.  **Conceptual Mapping Engine**: Translates the semantic representation into a set of visual concepts based on a target pictogram system (e.g., ARASAAC).
 3.  **Hybrid SVG Generation Core**: Generates the final SVG using a two-stage process: an LLM creates a semantically structured SVG "scaffold," which is then refined by a diffusion model for visual aesthetics.
 4.  **Accessibility Post-processor**: Programmatically injects accessibility metadata (e.g., `<title>`, `<desc>`, `role="img"`, `aria-labelledby`) into the SVG to ensure WCAG/ARIA compliance.
@@ -42,10 +43,14 @@ This repository is primarily focused on the development and documentation of the
 
 ### Installation
 
-1.  Clone the repository:
+1.  Clone the repository with submodules:
     ```bash
-    git clone https://github.com/mediafranca/pictonet.git
+    git clone --recurse-submodules https://github.com/mediafranca/pictonet.git
     cd pictonet
+    ```
+    Or if you've already cloned the repository:
+    ```bash
+    git submodule update --init --recursive
     ```
 2.  Install Node.js dependencies:
     ```bash

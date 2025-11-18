@@ -17,6 +17,8 @@ The proposed development strategy for PictoNet is based on a modular, phased app
 
 For PictoNet to translate intents rather than just descriptions, a robust NLU frontend is imperative. This module must transform a simple text string into a rich, structured semantic representation suitable for subsequent visual translation.
 
+**Note:** The technical implementation of this semantic framework is housed in the [`mediafranca/nlu-schema`](https://github.com/mediafranca/nlu-schema) repository, which defines the formal JSON schema and implements the NLU pipeline described in this section.
+
 ### 2.1. The Need for a Multilayered Semantic Abstraction
 A single theoretical approach is insufficient to capture the entirety of a communicative intent. A superficial syntactic analysis cannot determine the who, what, and how of an utterance in a functional way. Therefore, PictoNet requires a framework that integrates multiple levels of analysis: situational context (frame semantics), conceptual primitives (natural semantic metalanguage), and pragmatic function (speech acts). The integration of these three levels into a single hierarchical data structure is fundamental to bridging the semantic gap between language and pictograms.
 
@@ -84,7 +86,11 @@ This section presents the detailed technical plan for PictoNet, integrating the 
 
 ### 4.1. Module 1: Semantic Analysis Frontend
 
+**Implementation Repository:** [`mediafranca/nlu-schema`](https://github.com/mediafranca/nlu-schema) (integrated as a submodule in `nlu_frontend/`)
+
 This module executes the multilayered analysis described in Section II. It is a pipeline of fine-tuned transformer models: a speech act classifier, the `frame-semantic-transformer` parser, and a custom T5 model for NSM decomposition. The output is a single JSON object containing the complete semantic analysis of the input text. This JSON object is the most critical artifact of the system, as it decouples linguistic analysis from visual generation, allowing for independent development and debugging of each component and making the system adaptable to different pictogram systems.
+
+The `nlu-schema` repository defines the formal JSON schema for the semantic representation, provides validation tools, and implements the NLU pipeline components. This modular separation allows the semantic analysis layer to evolve independently while maintaining a stable interface with the downstream generation modules.
 
 ### 4.2. Module 2: Conceptual Mapping Engine
 This module translates the semantic representation into a set of visual concepts based on a target pictogram system. The primary target system is the **ARASAAC pictogram library**, due to its large size (~13,000 symbols), open license, and, critically, its well-defined system of visual conventions for representing abstract concepts, actions, and places. Although the exact download format needs confirmation, its use in high-resolution signage suggests the availability of vector formats.
@@ -230,6 +236,10 @@ The technical plan presented for PictoNet outlines a novel and feasible system t
 ---
 
 ## References
+
+### PictoNet Ecosystem Repositories
+
+**[`mediafranca/nlu-schema`](https://github.com/mediafranca/nlu-schema)** - Natural Language Understanding schema and pipeline implementation for semantic analysis (Frame Semantics, NSM, Speech Act Classification)
 
 ### Key Papers and Models
 
