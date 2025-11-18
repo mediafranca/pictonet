@@ -1,156 +1,69 @@
-# PictoNet: Local, Modular, and Semantically Grounded Pictogram Generation
+# PictoNet: A Generative Pictographic System
 
-**PictoNet** is an open and public initiative led by [MediaFranca](https://github.com/mediafranca). It aims to develop a generative pictogram system to support individuals with complex communication needs (CCN), with a particular focus on cognitive accessibility, cultural responsiveness, and self-determination.
+**PictoNet** is an open-source, public good initiative by [MediaFranca](https://github.com/mediafranca) dedicated to building a generative language model for Augmentative and Alternative Communication (AAC). Our mission is to create a transparent, editable, and community-governed infrastructure that empowers individuals with complex communication needs (CCN) to express themselves more fully.
 
-PictoNet is a research-driven visual language pipeline designed to generate editable, semantically meaningful SVG pictograms from natural language input. It is built around the principle of doing more with less: using small, local models, modular components, and iterative refinement rather than relying on large-scale, opaque AI infrastructures.
+We are not just building a tool; we are seeding the conditions for a community-governed commons that can grow and evolve with the people it serves. This project reframes generative systems as design materials that communities can shape to reflect their own communicative priorities.
 
-The core insight is to bootstrap the system with a seed model that generates synthetic training data for a more refined model down the line. The approach is highly adaptable, culturally aware, and geared towards self-hosted, federated environments.
+## The PictoNet Ecosystem
 
-This repository hosts the preliminary development of the core engine for pictogram generation. The project is in an early research and prototyping phase and is not yet suitable for production use.
+The PictoNet project is a modular ecosystem organized across several repositories. This structure separates concerns and clarifies how different parts of the project relate to one another.
 
-## Project Goals
+*   **`mediafranca/pictonet`** (This Repository): The core generative engine. This repository contains the trained models, the source code for the 5-stage generative pipeline, the `PICTOS` training dataset, and foundational documentation, including the detailed technical plan.
+*   **`mediafranca/pictoforge`**: The web-based interface for round-trip authoring, interaction, and feedback (RLHF). PictoForge is the primary gateway for users, practitioners, and researchers to engage with the generative model.
+*   **`mediafranca/vcsci`**: The Visual Communicability and Semantic Correspondence Index. This repository stores the benchmark phrase sets and evaluation tools used to assess the clarity, effectiveness, and semantic accuracy of the generated pictograms.
+*   **`mediafranca/manifesto`**: The repository for the project's guiding principles and ethical framework, open to discussion and community input.
 
-- Develop a generative model capable of producing semantically coherent pictograms from textual input.
-- Create a public infrastructure for dataset sharing, model evaluation, and interface testing.
-- Encourage collaborative contributions from the research, AAC, and design communities.
+## About This Repository (`mediafranca/pictonet`)
 
-## Roadmap
+This repository contains the core of the PictoNet project: the generative engine that translates communicative intents into accessible, semantically-structured SVG pictograms. It serves as the central hub for the technical plan, model development, data management, and scripting related to the generative pipeline.
 
-This roadmap outlines the planned development milestones for the PictoNet project:
+## Key Technical Concepts & Architecture Overview
 
-1. **Identification of Foundational Models**  
-   Evaluation of suitable architectures for text-to-image generation and symbolic reasoning, with emphasis on interpretability and SVG output.
+PictoNet's core innovation lies in its ability to go beyond literal text-to-image synthesis, addressing the more complex task of pragmatically aware intermodal translation. This is achieved through a sophisticated **5-stage generative pipeline**:
 
-2. **Dataset Generation and Curation**  
-   - Construction of training datasets combining visual, linguistic, and contextual information.  
-   - Validation and expert curation to ensure consistency, usability, and inclusivity of generated outputs.
+1.  **Semantic Analysis Frontend**: Deconstructs natural language input into a rich, structured semantic representation using Frame Semantics, Natural Semantic Metalanguage (NSM), and Speech Act Classification.
+2.  **Conceptual Mapping Engine**: Translates the semantic representation into a set of visual concepts based on a target pictogram system (e.g., ARASAAC).
+3.  **Hybrid SVG Generation Core**: Generates the final SVG using a two-stage process: an LLM creates a semantically structured SVG "scaffold," which is then refined by a diffusion model for visual aesthetics.
+4.  **Accessibility Post-processor**: Programmatically injects accessibility metadata (e.g., `<title>`, `<desc>`, `role="img"`, `aria-labelledby`) into the SVG to ensure WCAG/ARIA compliance.
+5.  **Refinement and Iteration (RLHF)**: Utilizes Reinforcement Learning from Human Feedback (via PictoForge) to continuously improve the model's outputs.
 
-3. **Development of RLHF Interface**  
-   - Design and implementation of a Reinforcement Learning from Human Feedback (RLHF) interface for iterative model improvement.  
-   - Integration of community feedback and expert annotations to guide model fine-tuning.
+For a comprehensive understanding of the linguistic and cognitive foundations, architectural paradigms, data/training strategies, evaluation protocols, and accessibility engineering, please refer to the full **[Technical Plan](docs/TECHNICAL_PLAN.md)**.
 
-## High-Level Strategy
+## Getting Started
 
-### Objective
+This repository is primarily focused on the development and documentation of the PictoNet generative model.
 
-To build a pictogram-based AAC (Augmentative and Alternative Communication) tool that translates natural language into structured, context-aware, and editable SVGs — optimised for accessibility, transparency, and cultural relevance.
+### Prerequisites
 
-### Design Philosophy
+*   Node.js (for general repository management, though core model development may use Python)
+*   npm (for general repository management)
 
-* Prioritise modularity over complexity
-* Enable local training and deployment
-* Design for human-in-the-loop collaboration
-* Use semantic abstraction to guide visual composition
-* Emphasise cultural adaptability and transparent workflows
+### Installation
 
-## System Architecture
-
-The pipeline consists of three iterative stages:
-
-### 1. Semantic Planning (LLM as Visual Planner)
-
-* **Input**: A phrase in natural language (e.g. "A friendly robot holding a green triangular flag")
-
-* **LLM Role**: Acts as a semantic parser and visual planner, producing a structured scene blueprint:
-
-  * **Entities (objects)**: e.g. `robot_body`, `robot_head`, `flag`
-  * **Attributes**: shape, colour, emotion, etc.
-  * **Spatial relationships**: above, inside, near, etc.
-  * **Style hints**: e.g. cartoonish, minimal, sharp
-
-* **Output**: A JSON or XML blueprint for the scene layout
-
-This layer can use local LLMs (e.g. Mistral, LLaMA) with prompt engineering or light fine-tuning for domain-specific planning.
-
-### 2. SVG Generation (Token-to-Icon)
-
-* **Approach A: Symbol Reuse**
-  Use a curated `<defs>` library of basic shapes and icons, composable into new images via attributes.
-
-* **Approach B: SVG Synthesis**
-  For new entities or combinations, generate SVG code from scratch using:
-
-  * Diffusion models with SVG output
-  * LLMs fine-tuned on SVG syntax
-  * Hybrid symbolic models (e.g. OmniSVG)
-
-* **Layout Composition**:
-  Using the semantic plan, each element is placed using:
-
-  * `x`, `y`, `width`, `height`, `transform`
-  * Proper z-index ordering by SVG DOM order
-  * Semantic tagging via `id`, `class`, and `data-*`
-
-* **Output**: A fully structured and valid SVG file with embedded semantics
-
-### 3. Human Feedback & Refinement Loop
-
-* **Rendering & Review**:
-  Display SVG to user for visual, semantic, and functional validation.
-
-* **Feedback Modes**:
-
-  * Direct SVG editing (drag, resize, restyle)
-  * Natural language commands (e.g. "make the flag bigger")
-  * Auditing via LLM (comparison with initial intent)
-
-* **Refinement Cycle**:
-
-  * Log changes
-  * Re-generate only affected components
-  * Use human corrections to train improved iterations
-
-## Seed Model: Bootstrapping with Small Data
-
-To initiate the system:
-
-* Curate \~50 input phrases from AAC contexts (e.g. ARASAAC)
-* Handcraft or adapt \~50 corresponding SVGs
-* Train a small model that can generalise basic combinations
-* Use this as a **synthetic data generator** for further training
-
-This foundational phase facilitates iterative development without requiring large data corpora.
-
-## Workflow Summary
-
-1. User inputs natural language
-2. LLM parses it into a structured scene blueprint
-3. Generator model creates SVG components
-4. Composer assembles final SVG
-5. User provides feedback (visual or textual)
-6. System logs feedback and retrains incrementally
-
-## Security, Accessibility and Governance Considerations
-
-* **Local-first approach**: By favouring local inference and training, PictoNet reduces dependency on external servers and increases user control over data.
-* **Editable by design**: All SVGs include semantic metadata, making them modifiable through UI or direct code intervention.
-* **Transparent versioning**: All edits and generated outputs can be logged and version-controlled (e.g. via Git), allowing rollbacks and auditability.
-* **Community contribution model**: Pictograms and scene blueprints can be peer-reviewed and validated before being used in re-training cycles.
-* **Cultural sensitivity**: Local variants of pictograms can be added or swapped to reflect specific linguistic, social or symbolic preferences.
-
-## Future Directions
-
-* **Editor Integration**: A web-based editor for SVGs will allow visual editing with semantic tags preserved.
-* **Federated learning**: The system will eventually support federated updates from decentralised users, maintaining model coherence while respecting privacy.
-* **Stylistic expansion**: Incorporate stylisation models (e.g. sketch-like, isotype, cartoon) depending on user preference or context.
-* **Multi-language pipeline**: Add parsing support for phrases in multiple languages, while keeping the scene blueprint format language-neutral.
-* **Eye-tracking and situated interaction**: Explore using gaze tracking and contextual signals to predict user intent (cf. Visual World Paradigm).
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/mediafranca/pictonet.git
+    cd pictonet
+    ```
+2.  Install general repository dependencies (if any):
+    ```bash
+    npm install
+    ```
+    *(Note: Specific dependencies for model training and development will be detailed within the `models/`, `scripts/`, and `notebooks/` directories.)*
 
 ## Contributing
 
-This project is open to collaboration from researchers, developers, designers, and AAC users. Contributions can include:
+We welcome contributions from developers, designers, researchers, speech therapists, educators, and individuals with lived experience. Your insights are critical to ensuring that PictoNet remains responsive, relevant, and truly inclusive.
 
-* SVG icon contributions (following semantic and stylistic guidelines)
-* Dataset suggestions and linguistic corpora
-* Improvements to the editor, parser or layout engine
-* Feedback from AAC practitioners and communities
+Please read our **[CONTRIBUTING.md](CONTRIBUTING.md)** file for detailed information on how to get involved, including our contribution workflow, communication channels, and development setup. We also highly recommend reviewing the **[Technical Plan](docs/TECHNICAL_PLAN.md)** to understand the project's foundational concepts and architecture.
 
-For details on how to contribute, please see our [CONTRIBUTING.md](CONTRIBUTING.md) or [CONTRIBUIR.md](CONTRIBUIR.md) if you prefer Spanish.
+## Governance
 
-For questions, proposals or to join the development circle, please open an issue or contact the project maintainer.
+The project operates under a community-managed, reciprocity-based governance model. We value transparent decision-making and aim to create a structure where dedicated contributors can take on greater responsibility over time. Key communication channels include:
+
+*   **[GitHub Issues](https://github.com/mediafranca/pictonet/issues)**: For bug tracking, feature requests, and managing specific tasks.
+*   **[GitHub Discussions](https://github.com/mediafranca/pictonet/discussions)**: For broader collaboration, brainstorming, and community conversations.
 
 ## License
 
 This project is licensed under the terms of the [MIT License](LICENSE), unless otherwise stated.
-
-

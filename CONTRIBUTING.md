@@ -1,102 +1,61 @@
-
 # Contributing to PictoNet
 
-Thank you for your interest in contributing to **PictoNet**. This is a collaborative, public project dedicated to developing a generative system for pictogram-based communication. We welcome contributions from researchers, developers, designers, and practitioners across disciplines.
+First off, thank you for considering a contribution to PictoNet. This is a collaborative, public project, and we welcome contributions from researchers, developers, designers, practitioners, and anyone passionate about improving communication accessibility. Every contribution helps us build a more inclusive and expressive communicative future.
+
+## Communication Channels
+
+*   **[GitHub Issues](https://github.com/mediafranca/pictonet/issues)**: The best place for reporting bugs, submitting feature requests, or discussing specific implementation details.
+*   **[GitHub Discussions](https://github.com/mediafranca/pictonet/discussions)**: For broader conversations, brainstorming new ideas, asking questions, and sharing your work related to the project.
 
 ## How to Contribute
 
-### 1. Fork the Repository
+We welcome many types of contributions, including but not limited to:
 
-Start by forking the `mediafranca/pictonet` repository to your own GitHub account.
+*   **Code**: Improvements to the generative pipeline, model training scripts, or data processing tools.
+*   **Documentation**: Enhancements to our `README.md`, `TECHNICAL_PLAN.md`, foundational reports, or inline code comments.
+*   **Datasets**: Suggestions for linguistic corpora or new pictogram concepts.
+*   **Feedback**: Insights from AAC practitioners, communities, and individuals with lived experience.
 
-### 2. Clone Your Fork
+### Contribution Workflow
 
-```bash
-git clone https://github.com/your-username/pictonet.git
-cd pictonet
-````
+To ensure a smooth collaboration process, please follow this workflow:
 
-### 3. Create a Branch
+1.  **Find or Create an Issue**: Before starting work, check the [Issues tab](https://github.com/mediafranca/pictonet/issues) to see if there's an existing ticket for what you want to do. If not, please create a new one to outline the bug or feature. This allows the team to discuss the proposal and provide feedback.
 
-Use a descriptive name for your feature or fix:
+2.  **Fork the Repository**: Fork the `mediafranca/pictonet` repository to your own GitHub account.
 
-```bash
-git checkout -b feature/your-feature-name
-```
+3.  **Create a Branch**: Create a new branch from `main` in your fork. Use a descriptive name, like `fix/nlu-bug` or `feature/new-nsm-parser`.
+    ```bash
+    git checkout -b your-branch-name
+    ```
 
-### 4. Make Your Changes
+4.  **Set Up Your Development Environment**:
+    *   Clone your fork:
+        ```bash
+        git clone https://github.com/your-username/pictonet.git
+        cd pictonet
+        ```
+    *   Install general repository dependencies (if any):
+        ```bash
+        npm install
+        ```
+        *(Note: Specific dependencies for model training and development will be detailed within the `models/`, `scripts/`, and `notebooks/` directories. Please refer to the `TECHNICAL_PLAN.md` for a deeper understanding of the architecture and components.)*
 
-Ensure that your code is clean, well-documented, and adheres to existing formatting conventions. Include comments where appropriate, and test your code locally.
+5.  **Make Your Changes**: Write your code or documentation. Please adhere to the existing coding style and conventions.
 
-### 5. Commit and Push
+6.  **Commit Your Changes**: Use clear and descriptive commit messages.
+    ```bash
+    git add .
+    git commit -m "feat: Add new feature that does X" -m "Detailed description of the changes."
+    ```
 
-Commit your changes with a clear message:
+7.  **Push to Your Fork**:
+    ```bash
+    git push origin your-branch-name
+    ```
 
-```bash
-git add .
-git commit -m "Add [short description of your contribution]"
-git push origin feature/your-feature-name
-```
+8.  **Submit a Pull Request**: Open a pull request from your branch to the `main` branch of the `mediafranca/pictonet` repository. In the PR description, please reference the issue you are addressing (e.g., "Closes #123"). Provide a clear summary of the changes and any additional context.
 
-### 6. Submit a Pull Request
+The project maintainers will review your pull request, provide feedback, and merge it once it's ready.
 
-Go to your fork on GitHub and submit a pull request (PR) to the `main` branch of this repository. Include a description of the changes and the rationale behind them.
-
-We will review your PR and may suggest improvements or request additional information before merging.
-
-## Repository Structure
-
-The repository is organised to support both local and server-side development of the PictoNet core engine:
-
-```
-pictonet/
-├── server/             # Main backend server code (e.g., Flask, FastAPI or Node.js)
-│   ├── app/            # Core application logic, API routes, model interfaces
-│   ├── config/         # Configuration files and environment settings
-│   └── utils/          # Helper functions and utilities
-├── data/               # Sample datasets, input-output pairs, annotations
-├── models/             # Placeholder directory for model definitions or checkpoints
-├── scripts/            # CLI scripts for training, evaluation, or batch processing
-├── notebooks/          # Jupyter notebooks for exploration and prototyping
-├── requirements.txt    # Python dependencies (if applicable)
-├── environment.yml     # Conda environment file (optional)
-├── Dockerfile          # Container definition for deployment
-└── README.md           # Project overview and roadmap
-```
-
-To run the project locally:
-
-
-# Create and activate virtual environment (Python example)
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
-# Install dependencies
-```bash
-pip install -r requirements.txt
-```
-# Run the server (assuming Flask or FastAPI)
-```bash
-python server/app/main.py
-```
-
-Alternatively, the `Dockerfile` allows for containerised development and testing.
-
-## Guidelines
-
-* Please keep PRs focused. If you have multiple unrelated changes, submit separate PRs.
-* Write meaningful commit messages.
-* Comment your code where it is not self-explanatory.
-* Follow the project's coding style.
-* Respect existing abstractions and directory structure.
-
-## Reporting Issues
-
-If you encounter a bug or have a feature request, please [open an issue](https://github.com/mediafranca/pictonet/issues) and include:
-
-* A clear and descriptive title
-* Steps to reproduce (if applicable)
-* Environment details (e.g., OS, Python version)
-* Suggested solutions or workarounds (if known)
+Thank you for helping us build PictoNet!

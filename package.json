@@ -1,38 +1,27 @@
 {
   "name": "pictonet",
-  "version": "1.0.0",
-  "description": "Sistema de generación automática de pictogramas vectoriales para accesibilidad cognitiva.",
+  "version": "0.0.1",
+  "description": "A generative pictographic system for cognitive accessibility.",
   "main": "index.js",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hspencer/pictonet.git"
+    "url": "git+https://github.com/mediafranca/pictonet.git"
   },
   "keywords": [
-    "eleventy",
-    "pictogramas",
+    "pictograms",
     "SVG",
-    "accesibilidad"
+    "accessibility",
+    "generative-ai",
+    "aac"
   ],
-  "author": "Herbert Spencer",
-  "license": "ISC",
+  "author": "MediaFranca",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hspencer/pictonet/issues"
+    "url": "https://github.com/mediafranca/pictonet/issues"
   },
-  "homepage": "https://github.com/hspencer/pictonet#readme",
-  "devDependencies": {
-    "@11ty/eleventy": "^3.0.0",
-    "npm-run-all": "^4.1.5",
-    "sass": "^1.83.0"
-  },
+  "homepage": "https://github.com/mediafranca/pictonet#readme",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm-run-all --parallel sass-watch eleventy-serve",
-    "dev": "npm run start",
-    "eleventy-serve": "eleventy --serve",
-    "sass": "sass --style compressed src/css/styles.scss docs/css/styles.css",
-    "sass-watch": "sass --watch --style compressed src/css/styles.scss:docs/css/styles.css",
-    "build": "npm run sass && eleventy",
-    "build:prod": "ELEVENTY_ENV=production npm run build"
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
