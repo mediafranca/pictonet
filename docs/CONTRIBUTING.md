@@ -35,11 +35,19 @@ To ensure a smooth collaboration process, please follow this workflow:
         git clone https://github.com/your-username/pictonet.git
         cd pictonet
         ```
-    *   Install general repository dependencies (if any):
+    *   Install Node.js dependencies:
         ```bash
         npm install
         ```
-        *(Note: Specific dependencies for model training and development will be detailed within the `models/`, `scripts/`, and `notebooks/` directories. Please refer to the `TECHNICAL_PLAN.md` for a deeper understanding of the architecture and components.)*
+    *   Install Python dependencies:
+        ```bash
+        pip install -r requirements.txt
+        ```
+    *   Install client dependencies:
+        ```bash
+        npm run postinstall
+        ```
+        *(Note: Please refer to the `TECHNICAL_PLAN.md` for a deeper understanding of the architecture and components.)*
 
 5.  **Make Your Changes**: Write your code or documentation. Please adhere to the existing coding style and conventions.
 
