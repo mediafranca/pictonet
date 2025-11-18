@@ -8,10 +8,10 @@ We are not just building a tool; we are seeding the conditions for a community-g
 
 The PictoNet project is a modular ecosystem organized across several repositories. This structure separates concerns and clarifies how different parts of the project relate to one another.
 
-*   **`mediafranca/pictonet`** (This Repository): The core generative engine. This repository contains the trained models, the source code for the 5-stage generative pipeline, the `PICTOS` training dataset, and foundational documentation, including the detailed technical plan.
-*   **`mediafranca/pictoforge`**: The web-based interface for round-trip authoring, interaction, and feedback (RLHF). PictoForge is the primary gateway for users, practitioners, and researchers to engage with the generative model.
-*   **`mediafranca/vcsci`**: The Visual Communicability and Semantic Correspondence Index. This repository stores the benchmark phrase sets and evaluation tools used to assess the clarity, effectiveness, and semantic accuracy of the generated pictograms.
-*   **`mediafranca/manifesto`**: The repository for the project's guiding principles and ethical framework, open to discussion and community input.
+*   **[`mediafranca/pictonet`](https://github.com/mediafranca/pictonet)** (This Repository): The core generative engine. This repository contains the trained models, the source code for the 5-stage generative pipeline, the `PICTOS` training dataset, and foundational documentation, including the detailed technical plan.
+*   **[`mediafranca/pictoforge`](https://github.com/mediafranca/pictoforge)**: The web-based interface for round-trip authoring, interaction, and feedback (RLHF). PictoForge is the primary gateway for users, practitioners, and researchers to engage with the generative model.
+*   **[`mediafranca/vcsci`](https://github.com/mediafranca/vcsci)**: The Visual Communicability and Semantic Correspondence Index. This repository stores the benchmark phrase sets and evaluation tools used to assess the clarity, effectiveness, and semantic accuracy of the generated pictograms.
+*   **[`mediafranca/manifesto`](https://github.com/mediafranca/manifesto)**: The repository for the project's guiding principles and ethical framework, open to discussion and community input.
 
 ## About This Repository (`mediafranca/pictonet`)
 
@@ -35,8 +35,10 @@ This repository is primarily focused on the development and documentation of the
 
 ### Prerequisites
 
-*   Node.js (for general repository management, though core model development may use Python)
-*   npm (for general repository management)
+*   Node.js (for the API layer)
+*   npm (for managing Node.js dependencies)
+*   Python (for the ML Core)
+*   pip (for managing Python dependencies)
 
 ### Installation
 
@@ -45,17 +47,50 @@ This repository is primarily focused on the development and documentation of the
     git clone https://github.com/mediafranca/pictonet.git
     cd pictonet
     ```
-2.  Install general repository dependencies (if any):
+2.  Install Node.js dependencies:
     ```bash
     npm install
     ```
-    *(Note: Specific dependencies for model training and development will be detailed within the `models/`, `scripts/`, and `notebooks/` directories.)*
+3.  Install Python dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+4.  Install client dependencies:
+    ```bash
+    cd client && npm install && cd ..
+    ```
+
+### Running the Development Environment
+
+*   **Start the API Server (Node.js/TypeScript):**
+    ```bash
+    npm run dev:server
+    ```
+*   **Start the Client (Web Interface):**
+    ```bash
+    npm run dev:client
+    ```
+*   **Run both concurrently:**
+    ```bash
+    npm run dev
+    ```
+
+### ML Core Scripts
+
+*   **Train the ML Model:**
+    ```bash
+    npm run ml:train
+    ```
+*   **Run ML Inference:**
+    ```bash
+    npm run ml:infer
+    ```
 
 ## Contributing
 
 We welcome contributions from developers, designers, researchers, speech therapists, educators, and individuals with lived experience. Your insights are critical to ensuring that PictoNet remains responsive, relevant, and truly inclusive.
 
-Please read our **[CONTRIBUTING.md](CONTRIBUTING.md)** file for detailed information on how to get involved, including our contribution workflow, communication channels, and development setup. We also highly recommend reviewing the **[Technical Plan](docs/TECHNICAL_PLAN.md)** to understand the project's foundational concepts and architecture.
+Please read our **[CONTRIBUTING.md](docs/CONTRIBUTING.md)** file for detailed information on how to get involved, including our contribution workflow, communication channels, and development setup. We also highly recommend reviewing the **[Technical Plan](docs/TECHNICAL_PLAN.md)** to understand the project's foundational concepts and architecture.
 
 ## Governance
 
