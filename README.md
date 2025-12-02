@@ -12,7 +12,6 @@ The PictoNet project is a modular ecosystem organized across several repositorie
 *   **[`mediafranca/nlu-schema`](https://github.com/mediafranca/nlu-schema)**: The Natural Language Understanding front-end. This repository defines the semantic schema and provides the multilayered NLU pipeline (Frame Semantics, NSM, and Speech Act Classification) that transforms natural language input into structured semantic representations. Integrated as a submodule in the `nlu_frontend/` directory.
 *   **[`mediafranca/pictoforge`](https://github.com/mediafranca/pictoforge)**: The web-based interface for round-trip authoring, interaction, and feedback (RLHF). PictoForge is the primary gateway for users, practitioners, and researchers to engage with the generative model.
 *   **[`mediafranca/vcsci`](https://github.com/mediafranca/vcsci)**: The Visual Communicability and Semantic Correspondence Index. This repository stores the benchmark phrase sets and evaluation tools used to assess the clarity, effectiveness, and semantic accuracy of the generated pictograms.
-*   **[`mediafranca/manifesto`](https://github.com/mediafranca/manifesto)**: The repository for the project's guiding principles and ethical framework, open to discussion and community input.
 
 ## About This Repository (`mediafranca/pictonet`)
 
