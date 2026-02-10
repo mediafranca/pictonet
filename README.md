@@ -1,5 +1,7 @@
 # PictoNet: A Generative Pictographic System
 
+**Notice: this initiative is haltet in favour of pictos.net living at https://github.com/hspencer/pictos-net **
+
 **PictoNet** is an open-source, public good initiative by [MediaFranca](https://github.com/mediafranca) dedicated to building a generative language model for Augmentative and Alternative Communication (AAC). Our mission is to create a transparent, editable, and community-governed infrastructure that empowers individuals with complex communication needs (CCN) to express themselves more fully.
 
 We are not just building a tool; we are seeding the conditions for a community-governed commons that can grow and evolve with the people it serves. This project reframes generative systems as design materials that communities can shape to reflect their own communicative priorities.
